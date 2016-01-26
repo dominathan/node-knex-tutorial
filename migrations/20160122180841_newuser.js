@@ -12,6 +12,7 @@ exports.up = function(knex, Promise) {
       table.string('title');
       table.text('body');
       table.timestamps();
+      
     })
   ])
 };

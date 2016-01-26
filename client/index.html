@@ -5,16 +5,39 @@
     <title>User Post</title>
   </head>
   <body ng-app="userpost">
-    <h1>TEST</h1>
+    <h1>USER BLOGS</h1>
     <div ng-controller="UsersController">
+      <ul ng-repeat="user in users">
+        <li ng-click="getUserBlogs(user)">
+            {{user.username}}
+        </li>
+      </ul>
+
+
         <input type="text" name="username" ng-model="user.username">
         <input type="text" name="email" ng-model="user.email">
         <input type="button" name="name" value="Submit"ng-click="submitUser(user)">
         <input type="button" name="button" ng-click='getUsers()' value='Get Users'>
+        <br>
+        <h4>BLOG</h4>
+        <input type="text" name="title" ng-model="blog.title" placeholder="TITLE">
+        <br>
+        <input type="textarea" name='body' ng-model="blog.body" placeholder="hello">
+        <select ng-model="blog.user_id">
+          <option ng-repeat="user in users" value='{{user.id}}'>{{user.username}}</option>
+        </select>
+        <input type="button" name="" value='CREATE BLOG ENTRY' ng-click="submitBlog(blog)">
 
-        <ul ng-repeat="user in users">
-          <li>{{user.username}} | {{user.email}}<li>
-        </ul>
+        <h4> LATEST BLOGS </h4>
+
+        <div class="">
+          <ul ng-repeat="blog in blogs">
+            <h5 data-user-id="{{blog.user_id}}">{{blog.title}}<h5>
+            <p>{{blog.body}}</p>
+            <hr>
+          </ul>
+        </div>
+
     </div>
 
 
